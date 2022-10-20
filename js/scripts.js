@@ -16,10 +16,10 @@ function eventHandler(event) {
   const checked = document.querySelector("input[name='calc']:checked").value;
 }
 
-window.addEventListener("load", eventHandler()) {
+window.addEventListener("load", function() {
   const form = document.getElementById("calculator");
-  form.addEventListener("submit", finalResult())
-}
+  form.addEventListener("submit", finalResult);
+});
 
 function finalResult() {
   if (calcadd === true) {

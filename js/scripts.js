@@ -1,53 +1,69 @@
-const num1 = parseInt(document.querySelector("input#input1"));
-const num2 = parseInt(document.querySelector("input#input2"));
 
-const calcadd = document.querySelector("input#add").checked;
-const calcsub = document.querySelector("input#subtract").checked;
-const calcmult = document.querySelector("input#multiply").checked;
-const calcdiv = document.querySelector("input#divide").checked;
 
-window.onload = function() {
-  eventHandler();
-}
+
+
+
+// window.onload = function() {
+//   console.log("welcome");
+
+//   eventHandler();
+// }
 
 //----------------------------------
-function eventHandler(event) {
-  event.preventDefault();
-  const checked = document.querySelector("input[name='calc']:checked").value;
-}
+// function eventHandler() {
+//   console.log("welcome eventhandler"); 
+//   let form = document.querySelector("form");
+//   form.onSubmit = function(event) {
+//     console.log("welcome onsubmit"); 
+//     event.preventDefault();
+//     finalResult();
+//   }
+// }
 
 window.addEventListener("load", function() {
   const form = document.getElementById("calculator");
   form.addEventListener("submit", finalResult);
+  console.log("submit");
+  
 });
 
-function finalResult() {
-  if (calcadd === true) {
-    document.querySelector("output").innerText = addsum;
+function finalResult(event) {
+  event.preventDefault();
+  const num1 = parseInt(document.querySelector("input#input1").value);
+  const num2 = parseInt(document.querySelector("input#input2").value);
+  const calc = document.querySelector("input[name ='calc']:checked").value;
+    
+  let result;
+    if (calc === "add") {
+      result = add(num1,num2);
+    }
+    else if (calc === "subtract") {
+      result = subtract(num1, num2);
+    }
+    else if (calc === "multiply") {
+      result = multiply(num1, num2);
+    }
+    else if (calc === "divide") {
+    result = divide(num1, num2);
+    }
+    document.getElementById("output").innerText = result;
+    console.log(result);
   }
-  else if (calcsub === true) {
-    document.querySelector("output").innerText = subsum;
-  }
-  else if (calcmult === true) {
-    document.querySelector("output").innerText = multsum;
-  }
-  else if (calcdiv === true) {
-    document.querySelector("output").innerText = divsum;
-  }
-}
+
 
 function add(num1,num2) {
-  return addsum = (num1 + num2);
+  return num1 + num2;
 }
 
 function subtract(num1, num2) {
-  return subsum = (num1 - num2);
+  return num1 - num2;
 }
 
 function multiply(num1, num2) {
-  return multsum = (num1 * num2);
+  return num1 * num2;
 }
 
 function divide(num1, num2) {
-  return divsum = (num1 / num2);
+  return num1 / num2;
 }
+
